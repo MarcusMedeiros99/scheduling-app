@@ -1,7 +1,7 @@
 import knexConfig from '../knexfile';
 const knex = require('knex')(knexConfig['development']);
 const bcrypt = require('bcrypt');
-const {SALT_ROUNDS} = require('../config')['SALT_ROUNDS'];
+import {SALT_ROUNDS} from '../config';
 
 module.exports.get = async () => {
   const data = await knex

@@ -37,6 +37,22 @@ module.exports.getById = async (req: express.Request, res: express.Response) => 
   }
 }
 
+module.exports.getByUser = async (req: express.Request, res: express.Response) => {
+  try {
+    const data = await repository.getByUser(req.params.user_id);
+    res
+      .status(200)
+      .send(data);
+  }
+  catch (err) {
+    res
+      .status(500)
+      .send({
+        message: "Failed to proccess request"
+      })
+  }
+}
+
 module.exports.post = async (req: express.Request, res: express.Response) => {
   // #swagger.tags = ['events']
   try {

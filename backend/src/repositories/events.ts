@@ -18,8 +18,17 @@ module.exports.getById = async (id: number) => {
   return data;
 }
 
+module.exports.getByUser = async (user_id: number) => {
+  const data = await knex
+    .select()
+    .from('events')
+    .where({user_id});
+
+  return data;
+}
+
 module.exports.post = async (begin_time: number, end_time: number, user_id: number) => {
-  await knex('events')
+  return await knex('events')
     .insert({
       begin_time,
       end_time,
@@ -28,11 +37,17 @@ module.exports.post = async (begin_time: number, end_time: number, user_id: numb
 }
 
 module.exports.put = async (id: number, begin_time: number, end_time: number, user_id: number) => {
-  await knex('events')
+  return await knex('events')
     .where({id})
     .update({
       begin_time,
       end_time,
       user_id
     })
+}
+
+module.exports.del = async (id: number, begin_time: number, end_time: number, user_id: number) => {
+  return await knex('events')
+    .where({id})
+    .del()
 }

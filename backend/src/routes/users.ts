@@ -2,12 +2,13 @@ import express from 'express';
 
 const controller = require('../controllers/users');
 const router = express.Router();
+const authenticate = require('../middlewares/auth');
 
-router.get('/', controller.get);
-router.get('/:id', controller.getById);
-router.post('/', controller.post);
-router.put('/', controller.put);
-router.delete('/:id', controller.del);
+router.get('/', authenticate({requiresAdmin: true}), controller.get);
+router.get('/:id', authenticate({requiresAdmin:false}), controller.getById);
+router.post('/', authenticate({requiresAdmin: false}),controller.post);
+router.put('/', authenticate({requiresAdmin: false}), controller.put);
+router.delete('/:id', authenticate({requiresAdmin: false}), controller.del);
 
 
 
