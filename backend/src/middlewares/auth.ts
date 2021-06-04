@@ -15,6 +15,8 @@ module.exports = function ({requiresAdmin,}: OptionsType){
       const decoded = jwt.verify(token, SECRET);
       if (userId == decoded.id && !requiresAdmin||
           decoded.is_admin) {
+            req.body._userId = decoded.id
+            req.body._isAdmin = decoded._is_admin;
             next();
           }
       else {

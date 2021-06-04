@@ -27,26 +27,44 @@ module.exports.getByUser = async (user_id: number) => {
   return data;
 }
 
-module.exports.post = async (begin_time: number, end_time: number, user_id: number) => {
+type PostType = {
+  title: string,
+  begin_time: number, 
+  end_time: number,
+  user_id: number
+}
+
+module.exports.post = async ({title, begin_time, end_time, user_id}: PostType) => {
   return await knex('events')
     .insert({
+      title,
       begin_time,
       end_time,
       user_id
     })
 }
 
-module.exports.put = async (id: number, begin_time: number, end_time: number, user_id: number) => {
+type PutType = {
+  id: number,
+  title: string,
+  begin_time: number, 
+  end_time: number,
+  user_id: number
+}
+
+
+module.exports.put = async ({id, title, begin_time, end_time, user_id}: PutType) => {
   return await knex('events')
     .where({id})
     .update({
+      title,
       begin_time,
       end_time,
       user_id
     })
 }
 
-module.exports.del = async (id: number, begin_time: number, end_time: number, user_id: number) => {
+module.exports.del = async (id: number) => {
   return await knex('events')
     .where({id})
     .del()

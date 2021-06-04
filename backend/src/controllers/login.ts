@@ -13,7 +13,11 @@ type UserType = {
 }
 
 module.exports.get = async (req: express.Request, res: express.Response) => {
-  res.status(200).end();
+  res
+    .status(200)
+    .send({
+      userId: req.body._userId
+    });
 }
 
 module.exports.post = async (req: express.Request, res: express.Response) => {
