@@ -1,0 +1,17 @@
+.flashMessage {
+  width: 100%;
+  padding: 16px 16px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  color: #EEE;
+}
+
+.flashMessage.red {
+  background-color: rgba(200, 20, 20, 0.8);
+  border: rgba(200, 20, 20, 1) 1px solid;
+}
+
+.flashMessage.green {
+  background-color: rgba(20, 200, 20, 0.8);
+  color: rgba(20, 200, 20, 1) 1px solid;
+}

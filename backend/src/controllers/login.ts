@@ -28,6 +28,8 @@ module.exports.post = async (req: express.Request, res: express.Response) => {
       email
     })
     .then((rows: any) => {
+      const user = rows[0];
+      if (!user) throw new Error("User not found");
       return rows[0];
     }).then(async (user: UserType) => {
       const match = await bcrypt.compare(req.body.password, user.password);
@@ -48,6 +50,10 @@ module.exports.post = async (req: express.Request, res: express.Response) => {
       else {
         res.status(401).end();
       }
+    }).catch(() => {
+      res.status(404).send({
+        message: "User not found"
+      });
     })
   
   

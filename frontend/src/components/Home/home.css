@@ -1,0 +1,71 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.25rem;
+  font-family: 'Roboto', sans-serif;
+  width: 50%;
+  margin: auto;
+  padding-top: 16px;
+}
+
+.home .buttons {
+  display: flex;
+  width: 100%;
+}
+
+.home button {
+  border-radius: 4px;
+  border-style: none;
+  padding: 8px;
+  font-size: 1.25rem;
+  background: #DDD;
+}
+
+.home .buttons button {
+  flex: 1;
+  margin-top: 6px;
+}
+
+.home .buttons button:hover {
+  cursor: pointer;
+}
+
+.home .buttons button:last-child {
+  margin-left: 6px;
+  color: #EEE;
+}
+
+.home .events {
+  width: 100%;
+}
+
+.home .events ul {
+  list-style: none;
+  padding-left: 0;
+  
+}
+
+.home .events li {
+  padding: 16px;
+  margin-top: 12px;
+  border: rgba(0, 0, 0, 0.4) 1px solid;
+  border-radius: 6px;
+  font-size: 1.25rem;
+}
+
+.home .events h3 {
+  margin: 0;
+}
+
+.home .events h4 {
+  margin: 8px 0 0px;
+}
+
+
+.home .events .deleteBtn,
+.home .buttons .logoutBtn {
+  background-color: rgba(200, 20, 20, 1);
+} 

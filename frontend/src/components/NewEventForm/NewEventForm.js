@@ -1,11 +1,13 @@
 import {useState} from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import {AiOutlineCloseSquare} from 'react-icons/ai';
+import {AiOutlineClose} from 'react-icons/ai';
 
 import api from '../../api/api';
 
-function NewEventForm({hidden, setHidden, userId}) {
+import './newEventForm.css';
+
+function NewEventForm({hidden, userId, close, showFlashMessage}) {
   const [beginTime, setBeginTime] = useState(new Date());
   const [endTime, setEndTime] = useState(new Date());
   const [title, setTitle] = useState("");
@@ -22,14 +24,16 @@ function NewEventForm({hidden, setHidden, userId}) {
         user_id: userId
       })
       .then(res => {
-        console.log("Event created");
+        showFlashMessage("Event created", "green");
+        close();
       })
   }
 
   return (
-    <div hidden={hidden} >
-      <button onClick={() => setHidden(true)}>
-        <AiOutlineCloseSquare/>
+    hidden ? <div></div> :
+    <div className="newEventForm">
+      <button onClick={() => close()} className="closeBtn">
+        <AiOutlineClose size={40}/>
       </button>
       <form onSubmit={e => handleSubmit(e)}>
         <div>

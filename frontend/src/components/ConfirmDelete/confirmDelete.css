@@ -1,0 +1,14 @@
+
+.confirmDelete {
+  font-size: 1.25rem;
+  position: fixed;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #EEE;
+
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+}

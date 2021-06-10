@@ -26,7 +26,7 @@ function App() {
         setLoggedIn(false);
       })
 
-  }, [])
+  })
 
   if (loggedIn) {
     return (
