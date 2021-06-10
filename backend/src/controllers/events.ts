@@ -73,6 +73,12 @@ module.exports.post = async (req: express.Request, res: express.Response) => {
 module.exports.put = async (req: express.Request, res: express.Response) => {
   // #swagger.tags = ['events']
   try {
+    const data = await repository.getById(req.body.id);
+    if (data.user_id != req.body._userId) {
+      res
+        .status(401)
+        .end();
+    }
     await repository.put(req.body);
     res
       .status(200)
@@ -90,7 +96,14 @@ module.exports.put = async (req: express.Request, res: express.Response) => {
 module.exports.del = async (req: express.Request, res: express.Response) => {
   // #swagger.tags = ['events']
   try {
+    const data = await repository.getById(req.body.id);
+    if (data.user_id != req.body._userId) {
+      res
+        .status(401)
+        .end();
+    }
     await repository.del(req.params.id);
+    
     res
       .status(200)
       .end();
