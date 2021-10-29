@@ -97,7 +97,7 @@ module.exports.put = async (req: express.Request, res: express.Response) => {
 module.exports.del = async (req: express.Request, res: express.Response) => {
   // #swagger.tags = ['events']
   try {
-    const data = await repository.getById(req.body.id);
+    const data = await repository.getById(req.params.id);
     if (data[0].user_id != req.body._userId) {
       res
         .status(401)
@@ -111,6 +111,7 @@ module.exports.del = async (req: express.Request, res: express.Response) => {
       .end();
   }
   catch (err) {
+    console.log(err);
     res
       .status(500)
       .send({
