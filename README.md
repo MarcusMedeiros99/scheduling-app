@@ -5,8 +5,8 @@ Scheduling App is a web application to help the user's schedule management.
 # About
 An user is allowed to create an account and create/edit/delete events it owns.
 
-![Home Screenshot]('screenshots/home.png')
-![Events Screenshot]('screenshots/events.png')
+![Home Screenshot](screenshots/home.png')
+![Events Screenshot](screenshots/events.png)
 
 # Front-End
 The front-end was built using ```create-react-app```. 
